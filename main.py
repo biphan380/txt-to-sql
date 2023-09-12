@@ -15,7 +15,7 @@ api_key = os.environ['PINECONE_API_KEY']
 pinecone.init(api_key=api_key, environment="us-east1-gcp")
 
 # dimensions are for text-embedding-ada-002
-# pinecone.create_index("quickstart", dimension=1536, metric="euclidean", pod_type="p1")
+pinecone.create_index("quickstart", dimension=1536, metric="euclidean", pod_type="p1")
 pinecone_index = pinecone.Index("quickstart")
 
 # OPTIONAL: delete all
