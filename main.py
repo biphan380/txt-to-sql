@@ -89,14 +89,14 @@ wiki_docs = WikipediaReader().load_data(pages=cities)
 # Build SQL Index
 sql_database = SQLDatabase(engine, include_tables=["city_stats"])
 
-sql_index = GPTSQLStructStoreIndex.from_documents(
-    [],
-    sql_database=sql_database,
-    table_name="city_stats",
-)
+# sql_index = GPTSQLStructStoreIndex.from_documents(
+#     [],
+#     sql_database=sql_database,
+#     table_name="city_stats",
+# )
 
-from llama_index.indices.struct_store.sql_query import BaseSQLTableQueryEngine
-sql_query_engine = BaseSQLTableQueryEngine([], sql_database, table_name="city_stats")
+from llama_index.indices.struct_store.sql_query import BaseSQLTableQueryEngine, NLSQLTableQueryEngine
+sql_query_engine = NLSQLTableQueryEngine([], sql_database, table_name="city_stats")
 
 
 
