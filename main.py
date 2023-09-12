@@ -96,7 +96,7 @@ sql_database = SQLDatabase(engine, include_tables=["city_stats"])
 # )
 
 from llama_index.indices.struct_store.sql_query import BaseSQLTableQueryEngine, NLSQLTableQueryEngine
-sql_query_engine = NLSQLTableQueryEngine([], sql_database, tables=["city_stats"])
+sql_query_engine = NLSQLTableQueryEngine(sql_database, tables=["city_stats"])
 
 
 
