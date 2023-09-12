@@ -95,6 +95,11 @@ sql_index = GPTSQLStructStoreIndex.from_documents(
     table_name="city_stats",
 )
 
+from llama_index.indices.struct_store.sql_query import BaseSQLTableQueryEngine
+sql_query_engine = BaseSQLTableQueryEngine([], sql_database, table_name="city_stats")
+
+
+
 # Build Vector Index
 
 # Insert documents into vector index
@@ -113,10 +118,9 @@ from llama_index.tools.query_engine import QueryEngineTool
 from llama_index.indices.vector_store import VectorIndexAutoRetriever
 from llama_index.indices.struct_store.sql_query import (
     BaseSQLTableQueryEngine,
-    NLSQLTableQueryEngine,
 )
 
-sql_query_engine = sql_index.as_query_engine(synthesize_response=True)
+# sql_query_engine = sql_index.as_query_engine(synthesize_response=True)
 
 from llama_index.indices.vector_store.retrievers import VectorIndexAutoRetriever
 from llama_index.vector_stores.types import MetadataInfo, VectorStoreInfo
@@ -145,6 +149,7 @@ sql_tool = QueryEngineTool.from_defaults(
         'city_stats, containing the population/country of each city'
     )
 )
+
 print(type(sql_tool.query_engine))
 
 vector_tool = QueryEngineTool.from_defaults(
